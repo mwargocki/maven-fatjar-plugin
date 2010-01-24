@@ -41,7 +41,7 @@
   						<eclipseDir>D:\eclipse-jee\</eclipseDir>
   						<stripQualifier>true</stripQualifier>
   						<filterPattern>org.eclipse.swt.*</filterPattern>
-  						<deployTo>nexus::default::http://localhost:8081/nexus/content/repositories/eclipse-plugins</deployTo>
+  						<deployTo>nexus::default::http://localhost:8081/nexus/content/repositories/eclipse-plugins-releases</deployTo>
   					</configuration>
   				</execution>
   			</executions>
