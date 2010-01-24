@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-eplugin-plugin</artifactId>
+  <packaging>maven-plugin</packaging>
+  <version>1.0.0</version>
+  <name>maven-eplugin-plugin Maven Mojo</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+  	<repoBaseUrl>http://localhost:8081/nexus/content/repositories</repoBaseUrl>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <version>2.0.8</version>
+    </dependency>
+    <dependency>
+  	  <groupId>org.apache.maven</groupId>
+  	  <artifactId>maven-project</artifactId>
+  	  <version>2.0.8</version>
+  	</dependency>
+  	<dependency>
+  	  <groupId>org.apache.maven</groupId>
+  	  <artifactId>maven-core</artifactId>
+  	  <version>2.0.8</version>
+  	</dependency>
+  	<dependency>
+  	  <groupId>org.apache.maven</groupId>
+  	  <artifactId>maven-archiver</artifactId>
+  	  <version>2.2</version>
+  	</dependency>    
+  	<dependency>
+  	  <groupId>biz.aQute</groupId>
+  	  <artifactId>bndlib</artifactId>
+  	  <version>0.0.145</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.codehaus.plexus</groupId>
+  		<artifactId>plexus-resources</artifactId>
+  		<version>1.0-alpha-4</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.maven.shared</groupId>
+  		<artifactId>maven-osgi</artifactId>
+  		<version>0.2.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.eclipse.core</groupId>
+  		<artifactId>resources</artifactId>
+  		<version>3.3.0-v20070604</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>commons-io</groupId>
+  		<artifactId>commons-io</artifactId>
+  		<version>1.4</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  </dependencies>
+  
+  <distributionManagement>
+	  <repository>
+	    <id>nexus</id>
+	    <url>${repoBaseUrl}/releases</url>
+	  </repository>
+  </distributionManagement>
+</project>
