@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.jdt.core.classpathContainerInitializer">
+      <classpathContainerInitializer
+            class="com.bankcomm.laptev.project.classpath.JavaEEContainerInitializer"
+            id="com.bankcomm.laptev.project.JEE5_CONTAINER">
+      </classpathContainerInitializer>
+   </extension>
+
+
+</plugin>
