@@ -12,6 +12,18 @@
   	<repoBaseUrl>http://localhost:8081/nexus/content/repositories</repoBaseUrl>
   </properties>
   
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  			<configuration>
+  				<compilerVersion>1.5</compilerVersion>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+  
   <dependencies>
     <dependency>
       <groupId>org.apache.maven</groupId>
@@ -70,4 +82,24 @@
 	    <url>${repoBaseUrl}/releases</url>
 	  </repository>
   </distributionManagement>
+  
+  <developers>
+  	<developer>
+  		<id>ychao</id>
+  		<name>杨超</name>
+  		<email>ychao@bankcomm.com</email>
+  		<url>http://www.bankcomm.com</url>
+  		<organization>bankcomm</organization>
+  		<organizationUrl>http://www.bankcomm.com</organizationUrl>
+  		<roles>
+  		</roles>
+  	</developer>
+  </developers>
+  <organization>
+  	<name>googlecode</name>
+  	<url>http://code.google.com</url>
+  </organization>
+  <issueManagement>
+  	<url>http://code.google.com/p/maven-fatjar-plugin/issue/list</url>
+  </issueManagement>
 </project>
