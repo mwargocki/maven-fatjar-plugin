@@ -28,13 +28,6 @@
   	  <artifactId>maven-archiver</artifactId>
   	  <version>2.2</version>
   	</dependency>
-  	<dependency>
-  		<groupId>org.apache.maven.plugins</groupId>
-  		<artifactId>maven-eclipse-plugin</artifactId>
-  		<version>2.7</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
   </dependencies>
   <issueManagement>
   	<url>http://code.google.com/p/maven-fatjar-plugin/issue/list</url>
