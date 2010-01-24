@@ -1,4 +1,4 @@
-package com.bankcomm.laptev.project.classpath;
+package com.bankcomm.laptev.project.lauching;
 
 import java.io.File;
 import java.text.MessageFormat;

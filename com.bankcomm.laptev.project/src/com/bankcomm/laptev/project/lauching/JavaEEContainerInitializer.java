@@ -1,4 +1,4 @@
-package com.bankcomm.laptev.project.classpath;
+package com.bankcomm.laptev.project.lauching;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;

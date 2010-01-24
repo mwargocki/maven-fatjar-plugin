@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.jdt.core.classpathContainerInitializer">
       <classpathContainerInitializer
-            class="com.bankcomm.laptev.project.classpath.JavaEEContainerInitializer"
+            class="com.bankcomm.laptev.project.lauching.JavaEEContainerInitializer"
             id="com.bankcomm.laptev.project.JEE5_CONTAINER">
       </classpathContainerInitializer>
    </extension>
