@@ -7,21 +7,33 @@
   <version>1.0.0</version>
   <name>maven-fatjar-plugin Maven Mojo</name>
   <url>http://code.google.com/p/maven-fatjar-plugin/</url>
+  
+  <properties>
+  	<repoBaseUrl>http://localhost:8081/nexus/content/repositories</repoBaseUrl>
+  </properties>
+  
   <dependencies>
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-plugin-api</artifactId>
-      <version>2.0</version>
+      <version>2.0.8</version>
     </dependency>
     <dependency>
   	  <groupId>org.apache.maven</groupId>
   	  <artifactId>maven-project</artifactId>
-  	  <version>2.0</version>
+  	  <version>2.0.8</version>
   	</dependency>
   	<dependency>
   	  <groupId>org.apache.maven</groupId>
   	  <artifactId>maven-archiver</artifactId>
-  	  <version>2.0</version>
+  	  <version>2.2</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.maven.plugins</groupId>
+  		<artifactId>maven-eclipse-plugin</artifactId>
+  		<version>2.7</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
   	</dependency>
   </dependencies>
   <issueManagement>
@@ -43,5 +55,12 @@
   	<name>googlecode</name>
   	<url>http://code.google.com</url>
   </organization>
+  
+  <distributionManagement>
+	  <repository>
+	    <id>nexus</id>
+	    <url>${repoBaseUrl}/releases</url>
+	  </repository>
+  </distributionManagement>
 
 </project>
