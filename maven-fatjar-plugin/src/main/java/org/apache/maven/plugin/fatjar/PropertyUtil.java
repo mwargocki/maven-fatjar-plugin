@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.apache.maven.plugins.fatjar;
+package org.apache.maven.plugin.fatjar;
 
 import java.lang.reflect.Field;
 

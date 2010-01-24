@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.apache.maven.plugins.fatjar;
+package org.apache.maven.plugin.fatjar;
 
 /**
  * @author Ñî³¬  <ychao@bankcomm.com>
