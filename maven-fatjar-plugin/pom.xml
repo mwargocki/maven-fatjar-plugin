@@ -29,9 +29,26 @@
   	  <version>2.2</version>
   	</dependency>
   </dependencies>
-  <issueManagement>
-  	<url>http://code.google.com/p/maven-fatjar-plugin/issue/list</url>
-  </issueManagement>
+   
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  			<configuration>
+  				<compilerVersion>1.5</compilerVersion>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+  
+  <distributionManagement>
+	  <repository>
+	    <id>nexus</id>
+	    <url>${repoBaseUrl}/releases</url>
+	  </repository>
+  </distributionManagement>
+  
   <developers>
   	<developer>
   		<id>ychao</id>
@@ -48,12 +65,8 @@
   	<name>googlecode</name>
   	<url>http://code.google.com</url>
   </organization>
-  
-  <distributionManagement>
-	  <repository>
-	    <id>nexus</id>
-	    <url>${repoBaseUrl}/releases</url>
-	  </repository>
-  </distributionManagement>
+  <issueManagement>
+  	<url>http://code.google.com/p/maven-fatjar-plugin/issue/list</url>
+  </issueManagement>
 
 </project>
