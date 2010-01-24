@@ -21,6 +21,13 @@
   				<compilerVersion>1.5</compilerVersion>
   			</configuration>
   		</plugin>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-plugin-plugin</artifactId>
+  			<configuration>
+  				<goalPrefix>eplugin</goalPrefix>
+  			</configuration>
+  		</plugin>
   	</plugins>
   </build>
   
