@@ -93,7 +93,7 @@ public class FatjarMojo extends AbstractJarMojo {
 	 */
 	private void extraManifest() {
 		ManifestConfiguration manifest = super.archive.getManifest();
-		PropertyUtil.setProperty(manifest, "addClasspath", "true");
+		PropertyUtil.setProperty(manifest, "addClasspath", true);
 		PropertyUtil.setProperty(manifest, "classpathPrefix", classpathPrefix);
 	}
 	
