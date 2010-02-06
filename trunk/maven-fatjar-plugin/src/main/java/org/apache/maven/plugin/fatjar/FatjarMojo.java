@@ -38,6 +38,11 @@ public class FatjarMojo extends AbstractJarMojo {
 	 * @parameter expression="${fatjar.classpathPrefix}"
 	 */
 	private String classpathPrefix = "";
+	
+	/**
+	 * @parameter expression="${fatjar.mainClass}"
+	 */
+	private String mainClass = "";
 
 	/**
 	 * @parameter expression="${fatjar.deployDirectory}"
@@ -95,6 +100,7 @@ public class FatjarMojo extends AbstractJarMojo {
 		ManifestConfiguration manifest = super.archive.getManifest();
 		PropertyUtil.setProperty(manifest, "addClasspath", true);
 		PropertyUtil.setProperty(manifest, "classpathPrefix", classpathPrefix);
+		PropertyUtil.setProperty(manifest, "mainClass", mainClass);
 	}
 	
 	/**
