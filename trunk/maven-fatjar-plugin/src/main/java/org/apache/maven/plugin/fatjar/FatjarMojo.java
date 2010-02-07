@@ -6,6 +6,11 @@ import java.util.Set;
 
 import org.apache.maven.archiver.ManifestConfiguration;
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.DefaultArtifact;
+import org.apache.maven.artifact.handler.DefaultArtifactHandler;
+import org.apache.maven.artifact.repository.ArtifactRepository;
+import org.apache.maven.artifact.versioning.InvalidVersionSpecificationException;
+import org.apache.maven.artifact.versioning.VersionRange;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.codehaus.plexus.util.FileUtils;
@@ -20,6 +25,15 @@ import org.codehaus.plexus.util.FileUtils;
  * @requiresDependencyResolution runtime
  */
 public class FatjarMojo extends AbstractJarMojo {
+	
+	/**
+     * Local maven repository.
+     * 
+     * @parameter expression="${localRepository}"
+     * @required
+     * @readonly
+     */
+    private ArtifactRepository localRepository;
 	
 	/**
 	 * @parameter expression="${project.build.outputDirectory}"
@@ -42,7 +56,14 @@ public class FatjarMojo extends AbstractJarMojo {
 	/**
 	 * @parameter expression="${fatjar.mainClass}"
 	 */
-	private String mainClass = "";
+	private String mainClass;
+	
+	private final static String BOOT_MAIN_CLASS = "org.inframesh.bootjar.Boot";
+	
+	/**
+	 * @parameter expression="${fatjar.bootable}"
+	 */
+	private boolean bootable = false;
 
 	/**
 	 * @parameter expression="${fatjar.deployDirectory}"
@@ -74,7 +95,6 @@ public class FatjarMojo extends AbstractJarMojo {
 
 		super.getLog().info("Copy dependencies: ");
 		Set<Artifact> artifacts = project.getArtifacts();
-
 		for (Artifact artifact : artifacts) {
 			String scope = artifact.getScope();
 			if (!"compile".equals(scope) && !"runtime".equals(scope)
@@ -91,16 +111,37 @@ public class FatjarMojo extends AbstractJarMojo {
 				super.getLog().error(e.getMessage());
 			}
 		}
+		
+		//Fetch "org.inframesh.boot-jar"
+		if(bootable) {
+			VersionRange range = null;
+			range = VersionRange.createFromVersion("1.0.0");
+			Artifact bootJarArtifact = new DefaultArtifact("org.inframesh", "boot-jar", range, null, "jar", null, new DefaultArtifactHandler());
+			String bootjarPath = localRepository.getBasedir() + File.separator + localRepository.pathOf(bootJarArtifact) + ".jar";
+			try {
+				JarUtil.decompress(bootjarPath, classesDirectory, "org.*");
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
 	}
 	
 	/**
-	 * add "Class-Path: xx.jar" to MANIFEST.MF
+	 * add "Class-Path: xx.jar" to MANIFEST.MF<br/>
+	 * add "MainClass: xx"
 	 */
 	private void extraManifest() {
 		ManifestConfiguration manifest = super.archive.getManifest();
 		PropertyUtil.setProperty(manifest, "addClasspath", true);
 		PropertyUtil.setProperty(manifest, "classpathPrefix", classpathPrefix);
-		PropertyUtil.setProperty(manifest, "mainClass", mainClass);
+		if(mainClass != null) {
+			if(!bootable) {
+				PropertyUtil.setProperty(manifest, "mainClass", mainClass);
+			} else {
+				PropertyUtil.setProperty(manifest, "mainClass", BOOT_MAIN_CLASS);
+				super.archive.addManifestEntry("Real-Main-Class", mainClass);
+			}
+		}
 	}
 	
 	/**
